@@ -1,0 +1,695 @@
+@use 'utils/components';
+@use 'utils/colors' as *;
+@use 'utils/mixins' as *;
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+	scroll-padding-top: 40px;
+	font-size: 62.5%;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	font-family: 'Montserrat', sans-serif;
+	overflow-x: hidden;
+}
+
+.fixed {
+	position: fixed;
+}
+
+// NAVIGATION
+
+.nav {
+	position: fixed;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	top: 0;
+	width: 100vw;
+	padding: 30px 20px;
+	font-size: 3rem;
+	background-color: $main-white;
+	z-index: 10000;
+	overflow: hidden;
+	transition: 0.3s;
+
+	&__main {
+		text-decoration: none;
+		color: $main-black;
+	}
+
+	span {
+		font-size: 3.2rem;
+	}
+
+	&__logo {
+		border-bottom: 2px solid $main-black;
+	}
+
+	&__logo .fa-solid {
+		margin-right: 5px;
+	}
+
+	&__items {
+		display: none;
+	}
+
+	&__link {
+		padding: 40px 30px;
+		text-decoration: none;
+		font-size: 2rem;
+		font-weight: 300;
+		color: $main-black;
+		transition: background-color 0.5s;
+	}
+
+	&__link:hover {
+		background-color: black;
+		color: $main-white;
+	}
+}
+
+.nav-mobile {
+	position: fixed;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	top: -1500px;
+	right: 0px;
+	height: 100vh;
+	width: 100%;
+	background-color: rgb(254, 254, 254);
+	font-size: 2rem;
+	z-index: 2;
+	transition: top 0.3s;
+	touch-action: none;
+
+	&__items {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	&__link {
+		margin: 25px 0;
+		text-decoration: none;
+		font-size: 4rem;
+		color: $main-black;
+	}
+}
+
+.show {
+	top: 0;
+}
+
+.burger-btn {
+	display: block;
+	justify-content: center;
+	align-items: center;
+	padding: 10px 20px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	text-align: center;
+
+	&__box {
+		height: 40px;
+		font-size: 4rem;
+	}
+}
+
+// HEADER
+.header {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 9em;
+	height: 55vh;
+	width: 100%;
+	@include heroImage('../images/jungle-g2dcee1d76_640.jpg');
+	color: $main-white;
+	z-index: -1;
+
+	&__shadow {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+		background-color: rgba(0, 0, 0, 0.585);
+		z-index: -1;
+	}
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		top: 0;
+		left: 0;
+		right: 0;
+		width: 80%;
+		max-width: 1200px;
+		height: 100%;
+		text-align: center;
+	}
+
+	&__brand {
+		margin-bottom: 5px;
+		font-size: 2rem;
+	}
+
+	&__title {
+		font-size: 2.8rem;
+	}
+}
+
+// SECTION
+
+section {
+	margin: 40px 20px;
+}
+
+.section-title {
+	margin-bottom: 30px;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: 400;
+	font-size: 4rem;
+}
+
+// ABOUT US
+
+.about-us {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+
+	&__image {
+		background-image: url('../images/waters-3095682_640.jpg');
+		width: 90%;
+	}
+
+	&__info {
+		margin: 15px 15px 0 15px;
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__title {
+		margin-bottom: 10px;
+		font-weight: 600;
+		font-size: 3rem;
+	}
+
+	&__parag {
+		font-size: 2rem;
+	}
+}
+
+// HERO-IMG
+
+.hero-img {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	width: 100%;
+	height: 400px;
+	@include heroImage('../images/girl-5785590_640.jpg');
+	background-position: center;
+
+	&__shadow {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: rgba(0, 0, 0, 0.585);
+	}
+
+	&__info {
+		margin: 0 10px;
+		border: 1px solid $main-white;
+		z-index: 1;
+	}
+
+	&__text {
+		padding: 20px 40px;
+		font-size: 3.5rem;
+		font-weight: 500;
+		color: $main-white;
+		text-align: center;
+	}
+}
+
+// OFFER
+
+.offer {
+	text-align: center;
+
+	&__text {
+		font-size: 2.2rem;
+		margin-bottom: 30px;
+	}
+
+	&__cards {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+		margin: 20px 0;
+		text-align: center;
+		font-size: 2rem;
+	}
+
+	&__card {
+		width: 300px;
+		margin: 10px 0;
+		padding: 20px 20px;
+		border: 1px solid rgba(142, 142, 142, 0.61);
+		border-radius: 8px;
+		box-shadow: 0 0 5px rgb(126, 126, 126);
+		transition: transform 0.3s;
+	}
+
+	&__card:hover {
+		transform: scale(1.05);
+	}
+
+	&__card-title {
+		font-size: 2.8rem;
+		font-weight: 500;
+		margin-bottom: 15px;
+	}
+
+	&__card-money {
+		font-size: 4rem;
+		font-weight: bold;
+		margin-bottom: 15px;
+	}
+
+	&__list {
+		list-style-type: none;
+
+		li {
+			line-height: 1.5;
+		}
+
+		.fa-check {
+			color: rgb(59, 219, 59);
+		}
+	}
+
+	&__out {
+		color: gray;
+	}
+
+	&__btn {
+		margin-top: 20px;
+		padding: 10px 60px;
+		border: 1px solid rgba(208, 208, 208, 0.61);
+		border-radius: 8px;
+		box-shadow: 0 3px 5px rgb(126, 126, 126);
+		font-size: 2rem;
+		color: rgb(97, 97, 97);
+		background: none;
+		cursor: pointer;
+		transition: background-color 1s, box-shadow 1s, color 1s;
+	}
+
+	.offerbtn-color {
+		background-color: rgb(59, 219, 59);
+		box-shadow: 0 3px 5px rgb(59, 219, 59);
+		color: $main-black;
+	}
+
+	&__link {
+		text-decoration: none;
+		font-size: 2.5rem;
+	}
+
+	&__link:hover {
+		color: rgb(59, 219, 59);
+	}
+}
+
+// FOOTER
+
+.footer {
+	position: absolute;
+	left: 0;
+	width: 100vw;
+	background-color: rgb(239, 239, 239);
+
+	&__wrap {
+		display: flex;
+		justify-content: space-evenly;
+		align-items: center;
+		flex-direction: row;
+		padding: 60px 5px;
+		border-bottom: 1px solid black;
+		background-color: rgb(239, 239, 239);
+	}
+
+	&__logo {
+		margin-right: 20px;
+		font-size: 1.8rem;
+		border-bottom: 2px solid $main-black;
+
+		.fa-solid {
+			margin-right: 5px;
+		}
+	}
+
+	&__info {
+		display: flex;
+		flex-direction: row;
+	}
+
+	&__information ~ div {
+		display: none;
+	}
+
+	&__information {
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-start;
+
+		h3 {
+			display: none;
+		}
+
+		a {
+			text-decoration: none;
+			margin: 0 5px;
+			font-size: 1.8rem;
+			color: $main-black;
+		}
+
+		a:hover {
+			text-decoration: underline;
+		}
+	}
+
+
+	&__year {
+		padding: 10px;
+		font-size: 1.5rem;
+		text-align: center;
+	}
+}
+
+// MEDIA
+
+// 768
+@media (min-width: 768px) {
+	.section-title {
+		font-size: 5rem;
+	}
+
+	.nav {
+		z-index: 10;
+
+		&__logo,
+		span {
+			font-size: 5rem;
+		}
+	}
+
+	.nav-mobile {
+		&__link {
+			font-size: 6rem;
+		}
+	}
+
+	.hero-img {
+		&__text {
+			font-size: 3.8rem;
+			padding: 30px 100px;
+		}
+	}
+
+	.burger-btn {
+		padding: 20px 40px;
+
+		&__box .fa-solid {
+			font-size: 5rem;
+		}
+	}
+
+	.offer {
+		&__card {
+			width: 350px;
+			margin: 10px 20px;
+		}
+
+		&__card-title {
+			font-size: 5rem;
+		}
+
+		&__card-money {
+			font-size: 5.5rem;
+		}
+
+		&__text {
+			font-size: 3.5rem;
+		}
+
+		&__list {
+			font-size: 2.5rem;
+		}
+
+		&__link {
+			font-size: 4rem;
+		}
+	}
+
+	.footer {
+		&__logo {
+			font-size: 4rem;
+		}
+
+		&__information a {
+			margin: 0 15px;
+			font-size: 3rem;
+		}
+
+		&__year {
+			padding: 30px 0;
+			font-size: 2.5rem;
+		}
+	}
+}
+
+// 992
+@media (min-width: 992px) {
+	.nav {
+		justify-content: space-evenly;
+		z-index: 10;
+
+		&__items {
+			display: block;
+		}
+
+		&__logo,
+		span {
+			font-size: 4rem;
+		}
+
+		&__link {
+			font-size: 3rem;
+		}
+	}
+
+	.nav-mobile {
+		display: none;
+	}
+
+	.burger-btn {
+		display: none;
+	}
+
+	.header {
+		@include heroImage('../images/jungle-1807476_1920.jpg');
+
+		&__brand {
+			font-size: 2.8rem;
+		}
+
+		&__title {
+			font-size: 3.8rem;
+			font-weight: 600;
+		}
+	}
+
+	.about-us {
+		&__title {
+			font-size: 3.5rem;
+		}
+
+		&__parag {
+			margin: 0 30px;
+			line-height: 1.8;
+		}
+	}
+
+	.hero-img {
+		@include heroImage('../images/girl-5785590_1920.jpg');
+		background-position: center;
+	}
+
+	.offer {
+		&__cards {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+
+		&__card {
+			width: 350px;
+			margin: 10px 20px;
+		}
+
+		&__card-title {
+			font-size: 5rem;
+		}
+
+		&__card-money {
+			font-size: 5.5rem;
+		}
+
+		&__text {
+			font-size: 3.5rem;
+		}
+
+		&__list {
+			font-size: 2.5rem;
+		}
+	}
+}
+
+// 1200
+@media (min-width: 1200px) {
+.nav {
+	&__logo,
+		span {
+			font-size: 4.5rem;
+		}
+
+		&__link {
+			font-size: 3.5rem;
+		}
+	}
+
+	.header {
+		&__text {
+			align-items: flex-start;
+		}
+
+		&__brand {
+			font-size: 2.5rem;
+		}
+
+		&__title {
+			font-size: 4rem;
+			font-weight: 600;
+		}
+	}
+
+	.about-us {
+		flex-direction: row;
+		align-items: flex-start;
+
+		&__image {
+			width: 600px;
+			height: 400px;
+		}
+
+		&__info {
+			margin-left: 50px;
+			line-height: 2;
+			text-align: left;
+		}
+
+		&__parag {
+			margin: 0;
+		}
+	}
+
+	.hero-img {
+		&__text {
+			font-size: 5rem;
+			padding: 50px 200px;
+		}
+	}
+
+	.offer {
+		&__card {
+			width: 350px;
+			margin: 10px 20px;
+		}
+
+		&__card-title {
+			font-size: 5rem;
+		}
+
+		&__card-money {
+			font-size: 5.5rem;
+		}
+
+		&__text {
+			font-size: 3.5rem;
+		}
+
+		&__list {
+			font-size: 2.5rem;
+		}
+	}
+
+	.footer {
+		&__logo {
+			font-size: 6rem;
+		}
+
+		&__information ~ div {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&__information {
+			margin: 0 20px;
+			flex-direction: column;
+			align-items: flex-start;
+
+			h3 {
+				display: block;
+				margin-left: 14px;
+				margin-bottom: 10px;
+				font-weight: 600;
+				font-size: 2.5rem;
+			}
+
+			:nth-child(2) {
+				display: block;
+			}
+
+			a {
+				font-size: 2.5rem;
+				line-height: 2.0;
+			}
+		}
+	}
+}

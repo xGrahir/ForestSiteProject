@@ -1,0 +1,156 @@
+@use 'utils/mixins' as *;
+@use 'utils/colors' as *;
+
+.header {
+    position: relative;
+    flex-direction: column;
+    height: 300px;
+    @include heroImage('../images/park-4985202_640.jpg');
+    background-position: center;
+
+    &__text {
+        align-items: flex-start;
+        justify-content: flex-end;
+    }
+
+    &__title {
+        padding: 15px 0;
+        font-weight: 400;
+        font-size: 5rem;
+    }
+
+    &__line {
+        position: absolute;
+        bottom: 15px;
+        height: 2px;
+        width: 71%;
+        background-color: rgba(255, 255, 255, 0.53);
+    }
+}
+
+.offert {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    padding: 0 10px;
+
+    &__wrap {
+        display: flex;
+        flex-direction: column;
+        max-width: 600px;
+        border: 1px solid rgb(185, 185, 185);
+        border-radius: 6px;
+        box-shadow: 0 0 4px rgb(97, 96, 96);
+    }
+
+    &__image {
+        height: 300px;
+        @include heroImage('../images/forest-5002473_1280.jpg');
+        object-fit: cover;
+        object-position: center;
+    }
+
+    &__info {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+        text-align: left;
+        background-color: rgba(128, 128, 128, 0.1);
+    }
+    
+    &__title {
+        margin-bottom: 5px;
+        font-size: 2rem;
+    }
+
+    &__price {
+        margin-top: 10px;
+        font-size: 2.5rem;
+        font-weight: 600;
+    }
+
+    &__text {
+        font-size: 1.8rem;
+    }
+
+    &__btn {
+        margin-top: 20px;
+		padding: 10px 60px;
+		border: 1px solid rgba(208, 208, 208, 0.61);
+		border-radius: 8px;
+		box-shadow: 0 3px 5px rgb(126, 126, 126);
+        background-color: white;
+		font-size: 2rem;
+		color: rgb(97, 97, 97);
+		cursor: pointer;
+		transition: background-color 1s, box-shadow 1s, color 1s;
+    }
+
+    &__btn:hover {
+        background-color: rgb(59, 219, 59);
+		box-shadow: 0 3px 5px rgb(59, 219, 59);
+		color: $main-black;
+    }
+}
+
+@media(min-width: 768px) {
+    .offert {
+        &__wrap {
+            max-width: 780px;
+            flex-direction: row;
+        }
+
+        &__image {
+            width: 110rem;
+        }
+
+        &__image--left {
+            order: 1;
+        }
+
+        &__title {
+            font-size: 2.5rem;
+        }
+
+        &__price {
+            font-size: 3.5rem;
+        }
+
+        &__btn {
+            position: absolute;
+            bottom: 20px;
+        }
+    }
+}
+
+@media(min-width: 992px) {
+    .header {
+        background-image: url('../images/park-4985202_1280.jpg');
+    }
+}
+
+@media(min-width: 1200px) {
+    .offert {
+        &__wrap {
+            max-width: 1150px;
+        }
+
+        &__infotext {
+            margin-top: 40px;
+        }
+
+        &__image {
+            height: 400px;
+        }
+
+        &__title {
+            font-size: 3.5rem;
+        }
+
+        &__text {
+            font-size: 2.5rem;
+        }
+    }
+}
